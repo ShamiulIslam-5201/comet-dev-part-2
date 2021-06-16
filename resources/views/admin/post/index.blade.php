@@ -31,7 +31,7 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <a class="btn btn-primary" href="#">Add post</a>
+                        <a class="btn btn-primary" href="{{ route('post.create') }}">Add new post post</a>
                         <br>
                         <br>
                         <div class="card">

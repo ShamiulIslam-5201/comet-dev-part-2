@@ -1,100 +1,115 @@
 (function($){
     $(document).ready(function(){
-        $(document).on('click', '#logout_btn', function(e){
-            e.preventDefault();
-            $('#logout_form').submit();
-        });
-    });
+            // ck editor
+            CKEDITOR.replace('editor');
 
-    // Category status
-    $(document).on('click', 'input.cat_check', function(){
+            // select 2
+            $('.post_tag_select').select2();
 
-        let checked = $(this).attr('checked');
-        let status_id = $(this).attr('status_id');
-
-        if( checked == 'checked' ){
-            $.ajax({
-                url : 'category/status-inactive/' + status_id,
-                success : function(data){
-                    swal('Status Inactive successful');
-                }
+            // logout features
+            $(document).on('click', '#logout_btn', function(e){
+                e.preventDefault();
+                $('#logout_form').submit();
             });
-        }else {
-            $.ajax({
-                url : 'category/status-active/' + status_id,
-                success : function(data){
-                    swal('Status Active successful');
+
+            // Category status
+            $(document).on('click', 'input.cat_check', function(){
+
+                let checked = $(this).attr('checked');
+                let status_id = $(this).attr('status_id');
+
+                if( checked == 'checked' ){
+                    $.ajax({
+                        url : 'category/status-inactive/' + status_id,
+                        success : function(data){
+                            swal('Status Inactive successful');
+                        }
+                    });
+                }else {
+                    $.ajax({
+                        url : 'category/status-active/' + status_id,
+                        success : function(data){
+                            swal('Status Active successful');
+                        }
+                    });
                 }
+
             });
-        }
 
-    });
+            // delete btn
 
-    // delete btn
+            $('.delete-btn').click(function(e){
 
-    $('.delete-btn').click(function(e){
+                let conf = confirm('Are  you sure ?');
 
-        let conf = confirm('Are  you sure ?');
+                    if( conf == true ){
+                        return true;
+                    }else {
+                        return false;
+                    }
 
-            if( conf == true ){
-                return true;
-            }else {
-                return false;
-            }
+            });
 
-    });
+            // update/edit category
+            $('.edit_cat').click(function(e){
 
-    // update/edit category
-    $('.edit_cat').click(function(e){
+                e.preventDefault();
 
-        e.preventDefault();
+                let id = $(this).attr('edit_id');
 
-        let id = $(this).attr('edit_id');
+                $.ajax({
+                    url : 'category/' +id+ '/edit',
+                    success : function(data){
+                        $('#edit_category_modal form input[name="name"]').val(data.name);
+                        $('#edit_category_modal form input[name="edit_id"]').val(data.id);
+                        $('#edit_category_modal').modal('show');
+                    }
+                });
 
-        $.ajax({
-            url : 'category/' +id+ '/edit',
-            success : function(data){
-                $('#edit_category_modal form input[name="name"]').val(data.name);
-                $('#edit_category_modal form input[name="edit_id"]').val(data.id);
-                $('#edit_category_modal').modal('show');
-            }
-        });
+            });
 
-    });
+            //Update/edit Tag
+            $('.edit_tag').click(function(e){
 
-    //Update/edit Tag
-    $('.edit_tag').click(function(e){
+                e.preventDefault();
 
-        e.preventDefault();
+                let id = $(this).attr('edit_id');
 
-        let id = $(this).attr('edit_id');
+                $.ajax({
+                    url : 'tag/' +id+ '/edit',
+                    success : function(data){
+                        $('#edit_tag_modal form input[name="name"]').val(data.name);
+                        $('#edit_tag_modal form input[name="edit_id"]').val(data.id);
+                        $('#edit_tag_modal').modal('show');
+                    }
+                });
 
-        $.ajax({
-            url : 'tag/' +id+ '/edit',
-            success : function(data){
-                $('#edit_tag_modal form input[name="name"]').val(data.name);
-                $('#edit_tag_modal form input[name="edit_id"]').val(data.id);
-                $('#edit_tag_modal').modal('show');
-            }
-        });
-
-    });
+            });
 
 
-    // DELETE pOST
-    $('.delete-btn').click(function(e){
+            // DELETE pOST
+            $('.delete-btn').click(function(e){
 
-        let conf = confirm('Are  you sure ?');
+                let conf = confirm('Are  you sure ?');
 
-            if( conf == true ){
-                return true;
-            }else {
-                return false;
-            }
+                    if( conf == true ){
+                        return true;
+                    }else {
+                        return false;
+                    }
 
-    });
+            });
+
+            // post img load
+            $('#post_img_select').change(function(e){
+
+               let img_url = URL.createObjectURL(e.target.files[0]);
+               $('.post_img_load').attr('src', img_url );
+
+            });
 
 
+ });
 
 })(jQuery)
 
@@ -228,4 +243,5 @@
 
 
 //     });
+
 // })(jQuery)

@@ -13,20 +13,35 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap.min.css') }}">
 
+    {{-- select2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/font-awesome.min.css') }}">
+
+    {{-- select --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- Feathericon CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/feathericon.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/morris/morris.css') }}">
 
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
 
+
+
+    {{-- ck editor --}}
+    <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <!--[if lt IE 9]>
     <script src="assets/js/html5shiv.min.js"></script>
@@ -43,6 +58,9 @@
 <!-- jQuery -->
 <script src="{{ asset('admin/assets/js/jquery-3.2.1.min.js') }}"></script>
 
+<!-- Select 2 -->
+<script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+
 <!-- Bootstrap Core JS -->
 <script src="{{ asset('admin/assets/js/popper.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/bootstrap.min.js') }}"></script>
@@ -56,10 +74,11 @@
 <script src="{{ asset('admin/assets/js/chart.morris.js') }}"></script>
 
 <!-- CK Editor -->
-<script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.16.1/full/ckeditor.js"></script>
 
-<!-- Select 2 -->
+{{-- select js --}}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <!-- Custom JS -->
 <script src="{{ asset('admin/assets/js/script.js') }}"></script>
 <script src="{{ asset('admin/assets/js/comet/custom.js') }}"></script>
